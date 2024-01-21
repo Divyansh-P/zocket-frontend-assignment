@@ -1,6 +1,7 @@
 
 import './App.css'
 import Canvas from './components/Canvas/Canvas'
+import Editcontent from './components/EditingFields/Editcontent'
 import Editphoto from './components/EditingFields/Editphoto'
 
 function App() {
@@ -10,7 +11,8 @@ function App() {
    <>
     <h1 >Canvas Drawing App</h1>
    {//  <Canvas />
-   <Editphoto/>
+   //<Editphoto/>
+   <Editcontent/>
   }
     </>
   

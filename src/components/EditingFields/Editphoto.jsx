@@ -15,9 +15,9 @@ const Editphoto = () => {
   
   return (
     <div className='flex items-center h-10 w-2/3 border-2 border-slate-300 '>
-      <input type="file" id="custom-input" hidden onChange={(e)=>inputimagehandler(e)} />
+      <input type="file" id="image-input" hidden onChange={(e)=>inputimagehandler(e)} />
       <label className='text-sm  font-mono ml-7 text-slate-500' >Change the ad creative image</label>
-      <label htmlFor="custom-input" className='ml-5 text-sm text-blue-700 font-semibold font-mono underline underline-offset-1' >Select a File</label>
+      <label htmlFor="image-input" className='ml-5 text-sm text-blue-700 font-semibold font-mono underline underline-offset-1' >Select a File</label>
       <label className='text-sm  font-mono ml-5 text-slate-500' >{adimagename}</label>
     </div>
   )
