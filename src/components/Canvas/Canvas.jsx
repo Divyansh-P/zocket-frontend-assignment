@@ -25,14 +25,12 @@ class Canvas extends Component {
       const canvas = this.canvasRef.current;
         const ctx = canvas.getContext('2d',{ alpha: false });
         const image=new Image()
-       const image2=new Image()
+      const image2=new Image()
         const image3=new Image()
-       image3.onload=()=>{
-     ctx.drawImage(image, 0, 0);
-     
-        ctx.drawImage(image2, 0, 0);
+       image.onload=()=>{
+       ctx.drawImage(image, 0, 0);
+       ctx.drawImage(image2, 0, 0);
        ctx.drawImage(image3, 0, 0);
-      
        }     
       image.src ='https://d273i1jagfl543.cloudfront.net/templates/global_temp_landscape_temp_10_Design_Pattern.png';
      image2.src='https://d273i1jagfl543.cloudfront.net/templates/global_temp_landscape_temp_10_mask.png';
