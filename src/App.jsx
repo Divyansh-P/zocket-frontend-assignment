@@ -1,24 +1,26 @@
 
+import { Provider } from 'react-redux'
 import './App.css'
-import Canvas from './components/Canvas/Canvas'
-import ColorPicker from './components/EditingFields/ColorPicker'
-import EditCTA from './components/EditingFields/EditCTA'
-import Editcontent from './components/EditingFields/Editcontent'
-import Editphoto from './components/EditingFields/Editphoto'
+import store from './utills/store'
+import Display from './components/Canvas/Display'
+
+import EditArea from './components/EditingFields/EditArea'
 
 function App() {
 
 
   return (
-   <>
+   <Provider store={store}>
+    <div className='flex w-screen'>
   
-   {//  <Canvas />
-   //<Editphoto/>
-   //<Editcontent/>
-   //<EditCTA/>
-   <ColorPicker/>
-  }
-    </>
+    <Display/>
+    <EditArea/>
+   
+  
+    </div>
+
+    </Provider>
+  
   
   )
 }
