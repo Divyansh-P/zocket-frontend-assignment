@@ -34,7 +34,7 @@ const handlecolorChange = (color) => {
     <h1>Choose your color</h1>
     <div className='flex '>
     { Object.values(recentcolor.state).map((color,ind)=>(
-        <div key={ind} style={{ backgroundColor: color }} className= {`w-7 h-7 text-lg font-bold rounded-full cursor-pointer text-center `}/>
+        <div key={ind} style={{ backgroundColor: color }} className= {` w-7 mr-2 h-7 text-lg font-bold rounded-full cursor-pointer text-center `}/>
         
     )) 
     }
