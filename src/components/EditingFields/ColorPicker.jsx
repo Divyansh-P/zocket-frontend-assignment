@@ -8,14 +8,19 @@ const ColorPicker = () => {
     const [color, setColor] = useState('#0369A1');
     const [showpicker,setshowpicker]=useState(false) 
     const [recentcolor,setrecentcolor]=useState(new queue())
-  
+    const [c,setc]=useState('')  
+
    const recentcolorhandler=()=>{
     let newrecentcolor=new queue()
     newrecentcolor=Object.assign(recentcolor)
+    console.log(c)
+    console.log(color)
+    if(c===color){
+      return
+    }
     if(Object.keys(recentcolor.state).length>=5){
         newrecentcolor.pop()
         newrecentcolor.push(color)
-        console.log('working')
     }
     else{
         newrecentcolor.push(color)
@@ -31,7 +36,6 @@ const ColorPicker = () => {
   },[color])
 
 const handlecolorChange = (color) => {
-   
     setColor(color.hex);
   };
 
@@ -57,7 +61,7 @@ else{
     }
   <div className='w-7 h-7 text-lg font-bold bg-slate-100  rounded-full cursor-pointer text-center' onClick={()=>setshowpicker(true)}>+</div>
     {
-       showpicker&& <div className='absolute z-10'> <div onClick={()=>{setshowpicker(false);recentcolorhandler();}} className='fixed top-0 left-0 bottom-0 right-0 z-0'/> <SketchPicker color={color} onChange={handlecolorChange}/> <div className='w-full border-2 bg-white border-slate-300 h-10 font-mono text-xs font-bold text-center pt-2 cursor-pointer z-20 absolute' onClick={openEyeDropper}>Pick color from this page</div></div> 
+       showpicker&& <div className='absolute z-10'> <div onClick={()=>{setshowpicker(false);setc(color);recentcolorhandler();}} className='fixed top-0 left-0 bottom-0 right-0 z-0'/> <SketchPicker color={color} onChange={handlecolorChange}/> <div className='w-full border-2 bg-white border-slate-300 h-10 font-mono text-xs font-bold text-center pt-2 cursor-pointer z-20 absolute' onClick={openEyeDropper}>Pick color from this page</div></div> 
     
     }
     </div>
