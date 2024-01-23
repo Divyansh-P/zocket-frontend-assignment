@@ -4,23 +4,37 @@ class Canvas extends Component {
     constructor(props) {
         super(props);
         this.canvasRef = React.createRef();
+        this.textcanvasRef = React.createRef();
+        this.ctacanvasRef = React.createRef();
         this.defaultBgColor = '#0369A1';
+        this.textcontent='1 & 2 BHK Luxury Apartments at just Rs.34.97 Lakhs'
+        this.cta='ShopNow'
+        this.adimage='https://mygate.com/wp-content/uploads/2023/07/110.jpg'
       }
     
      componentDidMount(){ 
       this.drawtemplate()
-     
      }
 
-      componentDidUpdate(){
-        this.drawadimage(this.props.info.adimage)
+      componentDidUpdate(prevprops){
         this.writetextcontent(this.props.info.textcontent)
+       
+
+      if(prevprops.info.adimage!=this.props.info.adimage){
+        this.drawadimage(this.props.info.adimage)
+       }
+       
+       if(prevprops.info.cta!=this.props.info.cta){
         this.writecta(this.props.info.cta)
-      }
+       }
+       
+      
+      } 
 
 
  
  drawtemplate() {
+ 
       const canvas = this.canvasRef.current;
         const ctx = canvas.getContext('2d');
         const image=new Image()
@@ -44,24 +58,44 @@ class Canvas extends Component {
       } 
 
       drawadimage=(img)=>{
+      
         const canvas = this.canvasRef.current;
         const ctx = canvas.getContext('2d');
+       
+        ctx.globalCompositeOperation="source-atop"
+        ctx.clearRect( 56, 442,970,600);
+      
         const image=new Image()
        image.onload=()=>{
        ctx.drawImage(image, 56, 442,970,600);
        }
-       image.src =img
+       if(!img){
+        image.src =this.adimage
+       }
+       else{
+        image.src =img
+       }
+
+       ctx.globalCompositeOperation="source-over"
+      
       }
       
    writetextcontent=(text)=>{
-    const canvas = this.canvasRef.current;
+    
+    const canvas = this.textcanvasRef.current;
         const ctx = canvas.getContext('2d');
+      
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+       
+     
+
     ctx.fillStyle = '#FFFFFF'; 
       ctx.font = '44px Arial'; 
-      let start=50
-      if(!text){
-        text='hello'
+      let start=90
+      if(text===''){
+        text=this.textcontent
       }
+
       const lines=breakStringIntoArray(text,31)
       lines.map(line=>{
         ctx.fillText(line,50,start);
@@ -69,26 +103,31 @@ class Canvas extends Component {
       })
    }
 
+
+
    writecta=(text)=>{
-    const canvas = this.canvasRef.current;
+   
+    const canvas = this.ctacanvasRef.current;
         const ctx = canvas.getContext('2d');
-    
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
         const bgColor ="#000000"
         if(!text){
-        text='hello'
+        text=this.cta
       }
         const lines=breakStringIntoArray(text,20)
+      
+      ctx.font = '30px Arial'; 
       const text_width=ctx.measureText(lines[0]).width
       const text_height=lines.length*30
       const width=text_width+48
       const height=text_height+48
       drawRoundedRect(190, 320,width,height, 20, bgColor,ctx);
-        let start=320+height/2
-        ctx.font = '30px Arial'; 
+        let starty=320+(height/2)
+        const startx=190+24
         ctx.fillStyle ='#ffffff' ;
         lines.map(line=>{
-        ctx.fillText(line,214,start);
-        start=start+30
+        ctx.fillText(line,startx,starty);
+        starty=starty+30
       })
    }
     
@@ -96,12 +135,28 @@ class Canvas extends Component {
   render(){
 
     return (
-      <canvas className='w-[26rem]'
+      <>
+      <canvas className='w-[30rem]'
         ref={this.canvasRef}
         width={1080}
         height={1080}
-        style={{ backgroundColor:`${this.props.info.bgcolor}`,border:"2px solid black" }}
+        style={{ backgroundColor:`${this.props.info.bgcolor}`,position:'absolute' }}
       ></canvas>
+      <canvas className='w-[30rem]'
+        ref={this.textcanvasRef}
+        width={1080}
+        height={1080}
+        style={{position:'absolute'}}
+      ></canvas>
+      <canvas className='w-[30rem]'
+        ref={this.ctacanvasRef}
+        width={1080}
+        height={1080}
+        style={{ position:'absolute'}}
+      ></canvas>
+     
+      </>
+
     );
   }
 
