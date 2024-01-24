@@ -122,7 +122,7 @@ class Canvas extends Component {
       const width=text_width+48
       const height=text_height+48
       drawRoundedRect(190, 320,width,height, 20, bgColor,ctx);
-        let starty=320+(height/2)
+        let starty=320+(height/2+8)
         const startx=190+24
         ctx.fillStyle ='#ffffff' ;
         lines.map(line=>{
@@ -136,19 +136,19 @@ class Canvas extends Component {
 
     return (
       <>
-      <canvas className='w-[30rem]'
+      <canvas className='w-56 sm:w-[30rem]'
         ref={this.canvasRef}
         width={1080}
         height={1080}
         style={{ backgroundColor:`${this.props.info.bgcolor}`,position:'absolute' }}
       ></canvas>
-      <canvas className='w-[30rem]'
+      <canvas className='w-56 sm:w-[30rem]'
         ref={this.textcanvasRef}
         width={1080}
         height={1080}
         style={{position:'absolute'}}
       ></canvas>
-      <canvas className='w-[30rem]'
+      <canvas className='w-56 sm:w-[30rem]'
         ref={this.ctacanvasRef}
         width={1080}
         height={1080}

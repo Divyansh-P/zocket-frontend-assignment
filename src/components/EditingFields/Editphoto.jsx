@@ -21,7 +21,7 @@ const Editphoto = () => {
   },[adimage])
   
   return (
-    <div className='flex items-center h-14 w-4/5 border-2 border-slate-300 rounded-lg'>
+    <div className='flex items-center h-14 w-5/6 sm:w-4/5 border-2 border-slate-300 rounded-lg'>
       <input type="file" id="image-input" hidden onChange={(e)=>inputimagehandler(e)} />
       <label className='text-sm  font-mono ml-3 text-slate-500' >Change the ad creative image</label>
       <label htmlFor="image-input" className='ml-3 text-sm text-blue-700 font-semibold font-mono cursor-pointer underline underline-offset-1' >Select a File</label>
