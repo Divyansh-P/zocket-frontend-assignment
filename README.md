@@ -1,7 +1,8 @@
 # Zocket Frontend Assignment
 
 ## Clone the code 
-```js git clone https://github.com/Divyansh-P/zocket-frontend-assignment.git ```
+```js 
+git clone https://github.com/Divyansh-P/zocket-frontend-assignment.git ```
 
 ## Tech Stack
 - Reactjs
