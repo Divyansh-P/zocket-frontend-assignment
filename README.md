@@ -1,8 +1,23 @@
-# React + Vite
+# Zocket Frontend Assignment
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Clone the code 
+```js git clone https://github.com/Divyansh-P/zocket-frontend-assignment.git ```
 
-Currently, two official plugins are available:
+## Tech Stack
+- Reactjs
+- Redux
+- Tailwind Css
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+
+## Install Dependencies
+
+```js
+npm install
+```
+
+## Start the webapp
+```js
+npm run dev
+```
+
+
